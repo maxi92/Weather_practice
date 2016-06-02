@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#484E61">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="定制天气"
+            android:layout_centerInParent="true"/>
+
+        <Button
+            android:id="@+id/add_weather"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_add_weather"/>
+    </RelativeLayout>
+
+    <LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/weather_list_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    </LinearLayout>
+
+</LinearLayout>
