@@ -40,6 +40,10 @@ public class WeatherDB {
             values.put("city_name", weather.getCity_name());
             values.put("city_code",weather.getCity_code());
             values.put("city_weather",weather.getWeather());
+            values.put("time",weather.getTime());
+            values.put("date",weather.getDate());
+            values.put("l_tmp",weather.getL_tmp());
+            values.put("h_tmp",weather.getH_tmp());
             db.insert("Weather", null, values);
         }
     }
@@ -53,6 +57,10 @@ public class WeatherDB {
                 weather.setCity_name(cursor.getString(cursor.getColumnIndex("city_name")));
                 weather.setCity_code(cursor.getString(cursor.getColumnIndex("city_code")));
                 weather.setWeather(cursor.getString(cursor.getColumnIndex("city_weather")));
+                weather.setTime(cursor.getString(cursor.getColumnIndex("time")));
+                weather.setDate(cursor.getString(cursor.getColumnIndex("date")));
+                weather.setL_tmp(cursor.getString(cursor.getColumnIndex("l_tmp")));
+                weather.setH_tmp(cursor.getString(cursor.getColumnIndex("h_tmp")));
                 list.add(weather);
             } while(cursor.moveToNext());
         }
@@ -72,6 +80,11 @@ public class WeatherDB {
     private void updateWeather(Weather weather) {
         ContentValues values = new ContentValues();
         values.put("city_weather", weather.getWeather());
+        values.put("city_name", weather.getCity_name());
+        values.put("time",weather.getTime());
+        values.put("date",weather.getDate());
+        values.put("l_tmp",weather.getL_tmp());
+        values.put("h_tmp",weather.getH_tmp());
         db.update("Weather", values, "city_code = ?",new String[] {weather.getCity_code()});
     }
 }

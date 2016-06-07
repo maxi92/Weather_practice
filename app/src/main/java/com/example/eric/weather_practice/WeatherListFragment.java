@@ -31,8 +31,8 @@ public class WeatherListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mWeathers = WeatherDB.getInstance(getActivity()).loadWeather();
-        //ArrayAdapter<Weather> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, mWeathers);
+        //mWeathers = WeatherDB.getInstance(getActivity()).loadWeather();
+        mWeathers = WeatherArray.getInstance(getActivity()).getArray();
         WeatherAdapter adapter = new WeatherAdapter(mWeathers);
         Log.d("ListFragment1",adapter.toString());
         setListAdapter(adapter);
@@ -44,7 +44,11 @@ public class WeatherListFragment extends ListFragment {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
                 editor.putBoolean("isSelected",false);
-                editor.commit();
+                editor.apply();
+
+                if(WeatherPagerActivity.weatherPagerActivity != null)
+                    WeatherPagerActivity.weatherPagerActivity.finish();
+
                 startActivity(intent);
             }
         });
@@ -55,15 +59,13 @@ public class WeatherListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
 
-        Log.d("WeatherListFragment","onListItemClick");
+        if(WeatherPagerActivity.weatherPagerActivity != null)
+            WeatherPagerActivity.weatherPagerActivity.finish();
+
         Weather w = ((WeatherAdapter) getListAdapter()).getItem(position);
 
-        String code = w.getCity_code();
-        Intent intent = new Intent(getActivity(), WeatherActivity.class);
-        intent.putExtra("citycode",code);
-        intent.putExtra("state", 1);
-        if(WeatherActivity.weatherActivity != null)
-            WeatherActivity.weatherActivity.finish();
+        Intent intent = new Intent(getActivity(), WeatherPagerActivity.class);
+        intent.putExtra("weather", w);
         startActivity(intent);
         getActivity().finish();
     }
@@ -99,6 +101,10 @@ public class WeatherListFragment extends ListFragment {
                         ArrayAdapter<Weather> adapter = (ArrayAdapter<Weather>) getListAdapter();
                         Log.d("ListFragment",adapter.toString());
                         WeatherDB weatherDB = WeatherDB.getInstance(getActivity());
+                        ArrayList<Weather> mWeathers = WeatherArray.getInstance(getActivity()).getArray();
+                        for(Weather w:mWeathers) {
+                            weatherDB.saveWeather(w);
+                        }
                         for (int i = adapter.getCount() - 1; i >= 0; i--) {
                             if (getListView().isItemChecked(i)) {
                                 weatherDB.deleteWeather(adapter.getItem(i));

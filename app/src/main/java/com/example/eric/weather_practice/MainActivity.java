@@ -26,7 +26,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,20 +40,27 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private LocationManager locationManager;
     private String provider;
+    public static MainActivity mainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mainActivity = this;
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isSelected = prefs.getBoolean("isSelected",false);
-        Log.d("isSelected",Boolean.toString(isSelected));
+        if(WeatherPagerActivity.weatherPagerActivity != null)
+            WeatherPagerActivity.weatherPagerActivity.finish();
         if(isSelected) {
-            Intent intent = new Intent(this, WeatherActivity.class);
-            intent.putExtra("citycode",prefs.getString("citycode",""));
-            startActivity(intent);
-            finish();
+            //ArrayList<Weather> mWeathers = WeatherDB.getInstance(this).loadWeather();
+            ArrayList<Weather> mWeathers = WeatherArray.getInstance(this).getArray();
+            if(!mWeathers.isEmpty()) {
+                Intent intent = new Intent(this, WeatherPagerActivity.class);
+                intent.putExtra("weather",mWeathers.get(0));
+                startActivity(intent);
+            }
         }
+
         search_button = (Button) findViewById(R.id.search_button);
         search_text = (EditText) findViewById(R.id.search_text);
         listview = (ListView) findViewById(R.id.list_view);
@@ -80,14 +86,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Adapter adapter = parent.getAdapter();
                 City city = (City) adapter.getItem(position);
-                Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+                Intent intent = new Intent(MainActivity.this, WeatherProcess_invisible.class);
                 intent.putExtra("state", 1);
-                Log.d("MainActivity","citycode1 is "+city.getCity_code());
                 intent.putExtra("citycode", city.getCity_code());
-                if(WeatherActivity.weatherActivity != null)
-                    WeatherActivity.weatherActivity.finish();
                 startActivity(intent);
-                finish();
             }
         });
     }
@@ -218,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish(String response) {
                 String cityname = Utility.handleLocationResponse(response);
                 Log.d("cityname", cityname);
-                Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
+                Intent intent = new Intent(MainActivity.this, WeatherPagerActivity.class);
                 intent.putExtra("state",2);
                 intent.putExtra("cityname",cityname );
                 startActivity(intent);
@@ -245,5 +247,15 @@ public class MainActivity extends AppCompatActivity {
         if(progressDialog != null) {
             progressDialog.dismiss();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        WeatherDB weatherDB = WeatherDB.getInstance(this);
+        ArrayList<Weather> mWeathers = WeatherArray.getInstance(this).getArray();
+        for(Weather w:mWeathers) {
+            weatherDB.saveWeather(w);
+        }
+        super.onDestroy();
     }
 }

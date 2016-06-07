@@ -2,6 +2,8 @@ package com.example.eric.weather_practice;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -9,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -44,10 +47,11 @@ public class Utility {
     }
 
     //Process the response of weather
-    public static void handleWeatherResponse(Context context,String response) {
+    public static Weather handleWeatherResponse(Context context,String response) {
         response = Utility.convert(response);
         Log.d("Utility",response);
         try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日", Locale.CHINA);
             JSONObject jsonObject = new JSONObject(response);
             JSONObject weatherinfo = jsonObject.optJSONObject("retData");
             String citycode = weatherinfo.optString("citycode");
@@ -58,10 +62,11 @@ public class Utility {
             String h_tmp = weatherinfo.optString("h_tmp");
             String WD = weatherinfo.optString("WD");
             String WS = weatherinfo.optString("WS");
-            saveWeatherInfo(context, name, citycode, l_tmp, h_tmp,
-                    weather, time);
+            //saveWeatherInfo(context, name, citycode, l_tmp, h_tmp, weather, time);
+            return new Weather(name, weather, citycode, time, sdf.format(new Date()), l_tmp, h_tmp);
         } catch (JSONException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -84,17 +89,15 @@ public class Utility {
     }
 
     //save all the Weather information responded to SharedPreferences
-    public static void saveWeatherInfo(Context context, String name, String citycode, String l_tmp,
-                                       String h_tmp, String weather, String time) {
+    public static void saveWeatherInfo(Context context, Weather weather) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日", Locale.CHINA);
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
-        Log.d("Utility",name);
-        editor.putString("name",name);
-        editor.putString("time",time);
-        editor.putString("citycode",citycode);
-        editor.putString("weather",weather);
-        editor.putString("l_tmp",l_tmp);
-        editor.putString("h_tmp",h_tmp);
+        editor.putString("name",weather.getCity_name());
+        editor.putString("time",weather.getTime());
+        editor.putString("citycode",weather.getCity_code());
+        editor.putString("weather",weather.getWeather());
+        editor.putString("l_tmp",weather.getL_tmp());
+        editor.putString("h_tmp",weather.getH_tmp());
         editor.putString("date", sdf.format(new Date()));
         editor.putBoolean("isSelected",true);
         editor.commit();
@@ -133,4 +136,5 @@ public class Utility {
         sb.append(province+district+name);
         return sb.toString();
     }
+
 }

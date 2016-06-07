@@ -16,11 +16,16 @@
         </activity>
 
         <activity
-            android:name=".WeatherActivity"
+            android:name=".WeatherPagerActivity"
             android:launchMode="singleTask">
         </activity>
 
         <activity android:name=".WeatherListActivity"/>
+
+        <activity
+            android:name=".WeatherProcess_invisible"
+            android:theme="@style/AppTheme.NoDisplay"/>
+
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

@@ -13,7 +13,12 @@ public class WeatherOpenHelper extends SQLiteOpenHelper {
             "id integer primary key autoincrement," +
             "city_name text," +
             "city_code text," +
-            "city_weather text)";
+            "city_weather text," +
+            "time, " +
+            "date," +
+            "l_tmp," +
+            "h_tmp" +
+            ")";
 
     public WeatherOpenHelper (Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

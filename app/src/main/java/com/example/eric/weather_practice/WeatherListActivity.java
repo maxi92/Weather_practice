@@ -5,6 +5,8 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 /**
  * Created by Eric on 2016/5/31.
  */
@@ -22,5 +24,15 @@ public class WeatherListActivity extends AppCompatActivity{
                     .add(R.id.weather_list_container, fragment)
                     .commit();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        WeatherDB weatherDB = WeatherDB.getInstance(this);
+        ArrayList<Weather> mWeathers = WeatherArray.getInstance(this).getArray();
+        for(Weather w:mWeathers) {
+            weatherDB.saveWeather(w);
+        }
+        super.onDestroy();
     }
 }
