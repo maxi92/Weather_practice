@@ -45,6 +45,9 @@ public class WeatherProcess_invisible extends AppCompatActivity {
                w = Utility.handleWeatherResponse(WeatherProcess_invisible.this, response);
                 WeatherDB.getInstance(WeatherProcess_invisible.this).saveWeather(w);
                 ArrayList<Weather> mWeathers = WeatherArray.getInstance(WeatherProcess_invisible.this).getArray();
+                for(Weather w:mWeathers) {
+                    WeatherDB.getInstance(WeatherProcess_invisible.this).saveWeather(w);
+                }
                 mWeathers.clear();
                 mWeathers.addAll(WeatherDB.getInstance(WeatherProcess_invisible.this).loadWeather());
 
@@ -88,6 +91,9 @@ public class WeatherProcess_invisible extends AppCompatActivity {
                 w = Utility.handleWeatherResponse(WeatherProcess_invisible.this, response);
                 WeatherDB.getInstance(WeatherProcess_invisible.this).saveWeather(w);
                 ArrayList<Weather> mWeathers = WeatherArray.getInstance(WeatherProcess_invisible.this).getArray();
+                for(Weather w:mWeathers) {
+                    WeatherDB.getInstance(WeatherProcess_invisible.this).saveWeather(w);
+                }
                 mWeathers.clear();
                 mWeathers.addAll(WeatherDB.getInstance(WeatherProcess_invisible.this).loadWeather());
                 runOnUiThread(new Runnable() {

@@ -18,4 +18,8 @@
         <item name="android:windowNoDisplay">true</item>
     </style>
 
+    <style name="FutureWeatherText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#CCFFFFFF</item>
+    </style>
 </resources>

@@ -50,7 +50,7 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/pulish_text"
+            android:id="@+id/publish_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -64,7 +64,8 @@
             android:id="@+id/weather_info_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_below="@id/publish_text"
+            android:layout_centerHorizontal="true"
             android:orientation="vertical">
 
             <TextView
@@ -124,6 +125,288 @@
                     android:textColor="#FFF"
                     android:textSize="40sp" />
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/future_weather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/weather_info_layout"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="?android:attr/listDivider"
+                android:layout_above="@id/future_weather"/>
+
+            <RelativeLayout
+                android:id="@+id/future1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/weekday1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Friday"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/weather1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sunny"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/temperature1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="25"
+                    style="@style/FutureWeatherText"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/future2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/weekday2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Friday"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/weather2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sunny"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/temperature2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="25"
+                    style="@style/FutureWeatherText"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/future3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/weekday3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Friday"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/weather3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sunny"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/temperature3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="25"
+                    style="@style/FutureWeatherText"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/future4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/weekday4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Friday"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/weather4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sunny"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/temperature4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="25"
+                    style="@style/FutureWeatherText"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/future5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/weekday5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Friday"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/weather5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sunny"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/temperature5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="25"
+                    style="@style/FutureWeatherText"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/future6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/weekday6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Friday"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/weather6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sunny"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/temperature6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="25"
+                    style="@style/FutureWeatherText"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/future7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/weekday7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Friday"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/weather7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sunny"
+                    style="@style/FutureWeatherText"
+                    />
+
+                <TextView
+                    android:id="@+id/temperature7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="25"
+                    style="@style/FutureWeatherText"
+                    />
+
+            </RelativeLayout>
+
         </LinearLayout>
 
         <Button

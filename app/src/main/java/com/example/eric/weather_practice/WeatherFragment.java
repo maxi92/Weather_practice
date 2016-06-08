@@ -1,15 +1,11 @@
 package com.example.eric.weather_practice;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +51,7 @@ public class WeatherFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_weather, parent, false);
 
         cityNameText = (TextView) v.findViewById(R.id.city_name);
-        publishText = (TextView) v.findViewById(R.id.pulish_text);
+        publishText = (TextView) v.findViewById(R.id.publish_text);
         weatherDespText = (TextView) v.findViewById(R.id.weather_desp);
         temp1Text = (TextView) v.findViewById(R.id.temp1);
         temp2Text = (TextView) v.findViewById(R.id.temp2);
@@ -138,6 +134,9 @@ public class WeatherFragment extends Fragment {
                 w = Utility.handleWeatherResponse(getActivity(), response);
                 WeatherDB.getInstance(getActivity()).saveWeather(w);
                 ArrayList<Weather> mWeathers = WeatherArray.getInstance(getActivity()).getArray();
+                for(Weather w:mWeathers) {
+                    WeatherDB.getInstance(getActivity()).saveWeather(w);
+                }
                 mWeathers.clear();
                 mWeathers.addAll(WeatherDB.getInstance(getActivity()).loadWeather());
 

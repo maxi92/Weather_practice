@@ -73,59 +73,62 @@ public class WeatherListFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstance) {
         View v = super.onCreateView(inflater, parent, savedInstance);
-        ListView listView = (ListView) v.findViewById(android.R.id.list);
-        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
-        listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
-            @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+        ListView listView;
+        if (v != null) {
+            listView = (ListView) v.findViewById(android.R.id.list);
+            listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+            listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+                @Override
+                public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
 
-            }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                MenuInflater inflater = mode.getMenuInflater();
-                inflater.inflate(R.menu.weather_list_item_context, menu);
-                return true;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_item_delete_weather:
-                        Log.d("ListFragment","delete");
-                        ArrayAdapter<Weather> adapter = (ArrayAdapter<Weather>) getListAdapter();
-                        Log.d("ListFragment",adapter.toString());
-                        WeatherDB weatherDB = WeatherDB.getInstance(getActivity());
-                        ArrayList<Weather> mWeathers = WeatherArray.getInstance(getActivity()).getArray();
-                        for(Weather w:mWeathers) {
-                            weatherDB.saveWeather(w);
-                        }
-                        for (int i = adapter.getCount() - 1; i >= 0; i--) {
-                            if (getListView().isItemChecked(i)) {
-                                weatherDB.deleteWeather(adapter.getItem(i));
-                            }
-                        }
-                        ArrayList<Weather> tmp = weatherDB.loadWeather();
-                        mWeathers.clear();
-                        mWeathers.addAll(tmp);
-                        Log.d("ListFragment",mWeathers.size()+"");
-                        mode.finish();
-                        adapter.notifyDataSetChanged();
-                        return true;
-                    default:
-                        return false;
                 }
-            }
 
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-            }
-        });
+                @Override
+                public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                    MenuInflater inflater = mode.getMenuInflater();
+                    inflater.inflate(R.menu.weather_list_item_context, menu);
+                    return true;
+                }
+
+                @Override
+                public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                    return false;
+                }
+
+                @Override
+                public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.menu_item_delete_weather:
+                            Log.d("ListFragment","delete");
+                            ArrayAdapter<Weather> adapter = (ArrayAdapter<Weather>) getListAdapter();
+                            Log.d("ListFragment",adapter.toString());
+                            WeatherDB weatherDB = WeatherDB.getInstance(getActivity());
+                            ArrayList<Weather> mWeathers = WeatherArray.getInstance(getActivity()).getArray();
+                            for(Weather w:mWeathers) {
+                                weatherDB.saveWeather(w);
+                            }
+                            for (int i = adapter.getCount() - 1; i >= 0; i--) {
+                                if (getListView().isItemChecked(i)) {
+                                    weatherDB.deleteWeather(adapter.getItem(i));
+                                }
+                            }
+                            ArrayList<Weather> tmp = weatherDB.loadWeather();
+                            mWeathers.clear();
+                            mWeathers.addAll(tmp);
+                            Log.d("ListFragment",mWeathers.size()+"");
+                            mode.finish();
+                            adapter.notifyDataSetChanged();
+                            return true;
+                        default:
+                            return false;
+                    }
+                }
+
+                @Override
+                public void onDestroyActionMode(ActionMode mode) {
+                }
+            });
+        }
 
         return v;
     }
