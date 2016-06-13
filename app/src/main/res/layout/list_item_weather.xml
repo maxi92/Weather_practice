@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:background="@drawable/background_activated" >
-    <TextView android:id="@+id/crime_list_item_city_name"
+    <TextView android:id="@+id/weather_list_item_city_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:text="Crime title"
+        android:textSize="20dp"
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:focusable="false"/>
-    <TextView android:id="@+id/crime_list_item_city_weather"
+
+    <TextView android:id="@+id/weather_list_item_city_weather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/crime_list_item_city_name"
+        android:layout_below="@id/weather_list_item_city_name"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:paddingTop="4dp"
-        android:text="Crime date"
+        android:textSize="20dp"
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:focusable="false"/>
+
+    <ImageView
+        android:id="@+id/weather_list_item_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:paddingLeft = "4dp"
+        android:paddingRight = "4dp"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>
 

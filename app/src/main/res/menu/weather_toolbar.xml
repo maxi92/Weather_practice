@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/switch_city"
+        android:icon = "@drawable/button_home"
+        android:title = "回到查询界面"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/refresh_weather"
+        android:title="刷新"
+        android:icon="@drawable/button_refresh"
+        app:showAsAction="always"/>
+
+</menu>

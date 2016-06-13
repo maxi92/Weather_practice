@@ -4,46 +4,6 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#484E61">
-
-        <Button
-            android:id="@+id/switch_city"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/button_home" />
-
-        <TextView
-            android:id="@+id/city_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="#fff"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/refresh_weather"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/button_refresh" />
-
-        <Switch
-            android:id="@+id/auto_update"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toLeftOf="@id/refresh_weather"
-            android:textOff="自动更新关闭"
-            android:textOn="自动更新开启"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/relative_layout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -115,15 +75,6 @@
                     android:layout_gravity="center_vertical"
                     android:textColor="#FFF"
                     android:textSize="40sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:text="°C"
-                    android:textColor="#FFF"
-                    android:textSize="40sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -132,13 +83,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/weather_info_layout"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="80dp"
+            android:background="#5F000000"
+            android:paddingBottom="15dp"
             android:orientation="vertical">
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="?android:attr/listDivider"
+                android:layout_height="2px"
+                android:background="#FFFFFFFF"
                 android:layout_above="@id/future_weather"/>
 
             <RelativeLayout
@@ -293,129 +246,6 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/future5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/weekday5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="5dp"
-                    android:text="Friday"
-                    style="@style/FutureWeatherText"
-                    />
-
-                <TextView
-                    android:id="@+id/weather5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Sunny"
-                    style="@style/FutureWeatherText"
-                    />
-
-                <TextView
-                    android:id="@+id/temperature5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    android:text="25"
-                    style="@style/FutureWeatherText"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/future6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/weekday6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="5dp"
-                    android:text="Friday"
-                    style="@style/FutureWeatherText"
-                    />
-
-                <TextView
-                    android:id="@+id/weather6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Sunny"
-                    style="@style/FutureWeatherText"
-                    />
-
-                <TextView
-                    android:id="@+id/temperature6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    android:text="25"
-                    style="@style/FutureWeatherText"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/future7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:id="@+id/weekday7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="5dp"
-                    android:text="Friday"
-                    style="@style/FutureWeatherText"
-                    />
-
-                <TextView
-                    android:id="@+id/weather7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Sunny"
-                    style="@style/FutureWeatherText"
-                    />
-
-                <TextView
-                    android:id="@+id/temperature7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    android:text="25"
-                    style="@style/FutureWeatherText"
-                    />
-
-            </RelativeLayout>
-
         </LinearLayout>
-
-        <Button
-            android:id="@+id/weather_list"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/button_list">
-        </Button>
     </RelativeLayout>
 </LinearLayout>

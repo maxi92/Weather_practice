@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -16,15 +16,17 @@
         </activity>
 
         <activity
-            android:name=".WeatherPagerActivity"
+            android:name=".Activity.WeatherPagerActivity"
             android:launchMode="singleTask">
         </activity>
 
-        <activity android:name=".WeatherListActivity"/>
+        <activity android:name=".Activity.WeatherListActivity"/>
 
         <activity
-            android:name=".WeatherProcess_invisible"
+            android:name=".Activity.WeatherProcess_invisible"
             android:theme="@style/AppTheme.NoDisplay"/>
+
+        <service android:name=".Activity.ForegroundService"></service>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
